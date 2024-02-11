@@ -4,7 +4,7 @@ import Workout from "../../../models/schema";
 export default async function handler(req, res) {
   await connectToDb();
 
-  if (req.method === 'POST') {
+  if (req.method === "POST") {
     try {
       const { name, reps, weight, sets, username } = req.body;
       await Workout.create({ name, reps, weight, sets, username });
@@ -15,7 +15,7 @@ export default async function handler(req, res) {
     }
   }
 
-  if (req.method === 'GET') {
+  if (req.method === "GET") {
     try {
       let list = await Workout.find();
       return res.status(200).json({ list });
@@ -26,6 +26,6 @@ export default async function handler(req, res) {
   }
 
   // Handle any other HTTP methods
-  res.setHeader('Allow', ['GET', 'POST']);
+  res.setHeader("Allow", ["GET", "POST"]);
   res.status(405).end(`Method ${req.method} Not Allowed`);
 }

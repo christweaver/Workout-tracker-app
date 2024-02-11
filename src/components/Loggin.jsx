@@ -25,7 +25,7 @@ export default function Loggin() {
   };
   const getLogo = () => {
     {
-      session ? router.replace("/") : router.replace("allWorkouts");
+      session ? router.replace("/") : router.replace("../allWorkouts");
     }
 
     // return router.replace('/')
