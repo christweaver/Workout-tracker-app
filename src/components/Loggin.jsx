@@ -3,7 +3,9 @@ import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+
 export default function Loggin() {
+  // default email and password
   const [email, setEmail] = useState("christy@gmail.com");
   const [password, setPassword] = useState("workout!");
   const router = useRouter();
@@ -27,8 +29,6 @@ export default function Loggin() {
     {
       session ? router.replace("/") : router.replace("../allWorkouts");
     }
-
-    // return router.replace('/')
   };
 
   return (
@@ -84,27 +84,3 @@ export default function Loggin() {
     </div>
   );
 }
-
-//     <div className="flex justify-center items-center h-screen">
-//     <div className="flex rounded-lg items-center bg-white h-[80%] w-[46%]" >
-
-//     <div className="flex w-1/2  h-[90%] mt-3 rounded-md">
-//      <Image src={stick} alt="" className="rounded-md flex" />
-//      </div>
-
-//       <div className="flex justify-center items-center pr-4  h-full w-1/2">
-
-//     <form onSubmit={handleSubmit} className=" flex-col leading-loose pl-20 h-3/4">
-//     <h1 className="text-[37px] font-extrabold pt-[30px] pb-6 ">Log In</h1>
-
-//     <input type="text" name="email" value={email} onChange={(e)=> setEmail(e.target.value)} className='border-b mb-6 mt-4' placeholder="Email"></input>
-//     <input type="text" name='password' value={password} onChange={(e)=>setPassword(e.target.value)} className="border-b mb-3 " placeholder="Password"></input>
-// <h1 className="mb-8 mt-10">Don't have an account? Sign up</h1>
-//     <button className=" cursor-pointer flex justify-center items-center w-[190px] h-[50px]
-//         rounded-[10px] bg-gradient-to-r from-slate-200 to-red-700 " type="submit">Log In</button>
-
-//       </form>
-//       </div>
-// </div>
-
-//         </div>

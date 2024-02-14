@@ -3,12 +3,12 @@ import Workout from "../../../models/schema";
 
 export default async function handler(req, res) {
   await connectToDb();
-
+  // Handles post and get methods
   if (req.method === "POST") {
     try {
       const { name, reps, weight, sets, username } = req.body;
       await Workout.create({ name, reps, weight, sets, username });
-      return res.status(200).json({ message: "NICE" });
+      return res.status(200).json({ message: "Request ok" });
     } catch (error) {
       console.error(error);
       return res.status(500).json({ message: "Internal Server Error" });
@@ -25,7 +25,6 @@ export default async function handler(req, res) {
     }
   }
 
-  // Handle any other HTTP methods
   res.setHeader("Allow", ["GET", "POST"]);
   res.status(405).end(`Method ${req.method} Not Allowed`);
 }

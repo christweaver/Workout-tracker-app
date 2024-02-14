@@ -4,6 +4,7 @@ import Deleted from "./Deleted";
 import { useState } from "react";
 import { useEffect } from "react";
 
+// Function to get topics from API endpoint
 let getTopics = async () => {
   const res = await fetch("/api/new", {
     cache: "no-store",
@@ -11,14 +12,18 @@ let getTopics = async () => {
   return res.json();
 };
 
-export default function Test() {
+export default function Allworkouts() {
+  const [list, setList] = useState([]);
+
+  // Get user email from session data
   const { data: session } = useSession();
   const user = session?.user.email;
-  const [list, setList] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
+      // Fetch data from API when mounted
       const data = await getTopics();
+      // Update list state with fetched data
       setList(data.list);
     }
 
@@ -27,9 +32,9 @@ export default function Test() {
 
   // Filter the data array to include only items where item.username matches user
   const filteredData = list.filter((item) => item.username === user);
-
   const dataByDate = {};
 
+  // Fixes formatting issues
   filteredData.forEach((item) => {
     const itemDate = item.createdAt.split("T")[0];
     if (!dataByDate[itemDate]) {
@@ -38,12 +43,14 @@ export default function Test() {
     dataByDate[itemDate].push(item);
   });
 
+  // Renders if there is no data but user is signed in
   if (filteredData.length === 0 && user !== undefined) {
     return (
       <h1 className="text-white text-[30px] text-center pt-32">
         Log your workouts to see them here!
       </h1>
     );
+    // Renders if user is not signed in
   } else if (filteredData.length === 0 && user === undefined) {
     return (
       <h1 className="text-white text-[30px] text-center pt-32">
@@ -89,32 +96,3 @@ export default function Test() {
     </div>
   );
 }
-
-//   export default async function Login() {
-
-//     let {list}= await getTopics()
-//     return (
-//       <div>
-//          <Navbar />
-
-//       {list.map((item)=>{
-//        <div></div>
-//    return <div className="border-2 mb-5">
-// <Test />
-//         <h1>Name:{item.name}</h1>
-//         <h2>Weight:{item.weight}</h2>
-//         <h2>Reps:{item.reps}</h2>
-//         <h2>Sets:{item.sets}</h2>
-//         <h2>{item.createdAt}</h2>
-//         <h2>{item.username}</h2>
-//         <Link href={`/edit/${item._id}`}>Edit</Link>
-//         <Deleted id ={item._id} />
-//         </div>
-
-// })}
-//      {/* <button onClick={()=>signOut()}>Log out</button> */}
-
-//         </div>
-
-//     )
-//   }

@@ -4,10 +4,12 @@ import Link from "next/link";
 import Image from "next/image";
 import logo from "../assets/logoo.png";
 import { useSession } from "next-auth/react";
+
 export default function Navbar() {
   const router = usePathname();
   const { data: session } = useSession();
 
+  // Switches the background of logo dependent on page
   const getNavbarBackgroundColor = () => {
     if (router === "/workoutProgram") {
       return "  bg-transparent text-black";
@@ -17,6 +19,7 @@ export default function Navbar() {
 
   const signout = () => {
     signOut();
+    // sends user back to homepage
     return router.replace("/");
   };
 
@@ -35,6 +38,7 @@ export default function Navbar() {
         <Link href={"/allWorkouts"}>Your workouts</Link>
 
         {session ? (
+          // Switches text from log in to log out
           <button className="" onClick={() => signout()}>
             Log out
           </button>

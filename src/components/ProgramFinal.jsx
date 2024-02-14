@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import GetProgramApi from "./GetProgramApi";
 
+// Function to get res from api
 const getTopics = async (type) => {
   const res = await fetch(`/api/programs/${type}`, {
     cache: "no-store",
@@ -13,16 +14,19 @@ export default function MuscleGroup({ type, level }) {
 
   useEffect(() => {
     const fetchData = async () => {
+      // Pulls options from the function with the type being passed
       let { options } = await getTopics(type);
 
-      let compEx = options.filter((word) => word.compound === "true");
-      let nonCompex = options.filter((uno) => !uno.compound);
+      // Filter options into compound and non-compound exercises
+      let compEx = options.filter((comp) => comp.compound === "true");
+      let nonCompex = options.filter((non) => !non.compound);
 
       const getRandomSortValue = () => Math.random() * 2 - 1;
 
       compEx.sort(() => getRandomSortValue());
       nonCompex.sort(() => getRandomSortValue());
 
+      // splices arrays based on user level
       const spliceByLevel = (arr, beginner, intermediate, expert) => {
         if (level === "Beginner") {
           arr.splice(beginner);
@@ -32,10 +36,10 @@ export default function MuscleGroup({ type, level }) {
           arr.splice(expert);
         }
       };
-
+      // Beginner gets 2 comp & 2 noncomp, intermediate gets 3, etc.
       spliceByLevel(compEx, 2, 3, 4);
       spliceByLevel(nonCompex, 2, 3, 4);
-
+      // Sets the workout variable
       setWorkout([...compEx, ...nonCompex]);
     };
 

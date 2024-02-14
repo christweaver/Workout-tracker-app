@@ -2,23 +2,29 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 export default function EditForm({ name, weight, sets, reps, id }) {
+  // Pulls props from api/edit/id and sets values for the inputs to be updated
   let [newName, setName] = useState(name);
   let [newReps, setReps] = useState(reps);
   let [newWeight, setWeight] = useState(weight);
   let [newSets, setSets] = useState(sets);
   let router = useRouter();
+
   let handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Send patch request to api
     const res = await fetch(`/api/new/${id}`, {
       method: "PATCH",
       headers: {
         "Content-type": "application/json",
       },
+      // Sends new data
       body: JSON.stringify({ newName, newReps, newWeight, newSets }),
     });
     if (res.ok) {
       console.log("yay");
     }
+    // send user back to all workouts page after its been updated
     router.replace("/allWorkouts");
   };
 

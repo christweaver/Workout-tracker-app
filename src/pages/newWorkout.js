@@ -9,11 +9,14 @@ export default function NewWorkout() {
   const [weight, setWeight] = useState("");
   const [sets, setSets] = useState("");
   const { data: session } = useSession();
-  console.log(session?.user.email);
-  let username = session?.user.email;
   let router = useRouter();
+
+  // Find the signed in account
+  let username = session?.user.email;
+
   let handleSubmit = async (e) => {
     e.preventDefault();
+    // Send a POST request to new API endpoint
     const res = await fetch("/api/new", {
       method: "POST",
       headers: {
@@ -22,9 +25,9 @@ export default function NewWorkout() {
       body: JSON.stringify({ name, reps, weight, sets, username }),
     });
     if (res.ok) {
-      console.log("yay");
+      // Send to the all workouts page
+      router.replace("allWorkouts");
     }
-    router.replace("allWorkouts");
   };
 
   return (
@@ -35,6 +38,7 @@ export default function NewWorkout() {
         <h1 className="text-2xl font-poppins font-semibold mb-3 text-black">
           Add new workout
         </h1>
+
         <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
           <input
             name="name"

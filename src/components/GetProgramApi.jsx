@@ -1,14 +1,15 @@
 "use client";
-
 import { useState } from "react";
 import { useSession } from "next-auth/react";
 
 export default function Add({ workout }) {
   const { data: session } = useSession();
   console.log(session?.user.email);
+  // sets the username variable from the users email
   let username = session?.user.email;
 
   return (
+    // Displays info from function below
     <div className="grid grid-cols-2 gap-4 pl-10 pr-10 pb-4">
       {workout.map((item) => (
         <WorkoutItem key={item._id} item={item} username={username} />
@@ -16,13 +17,13 @@ export default function Add({ workout }) {
     </div>
   );
 }
-
+// Gets props from ProgramFinal
 function WorkoutItem({ item, username }) {
   const [reps, setReps] = useState("");
   const [weight, setWeight] = useState("");
   const [sets, setSets] = useState("");
   let name = item.name;
-
+  // Posts the inputs from below to new API endpoint
   const handleSubmit = async (e) => {
     e.preventDefault();
     const res = await fetch("/api/new", {
@@ -38,7 +39,7 @@ function WorkoutItem({ item, username }) {
   };
 
   let compound = item.compound ? "This is a compound exercise" : "";
-
+  // Displays all generated exercises based off level and type. User inputs their info of reps, sets, weight
   return (
     <div className=" mb-4 p-4 shadow-2xl rounded-lg pl-20">
       <form onSubmit={handleSubmit} className="flex flex-col space-y-4">

@@ -9,6 +9,7 @@ export default function Login() {
   }
 
   return (
+    // This is the first half rendered on workout programs page
     <div className="py-5">
       <h1 className="pb-6 text-white text-[30px] text-center font-bold">
         First, choose the muscles you would like to target
@@ -37,12 +38,15 @@ export default function Login() {
         </button>
       </div>
 
-      {type &&
-      
-      <><h1 className="pb-6 text-center text-white text-[30px] font-bold">
-        Next, choose your difficulty level
-      </h1>
-      <ProgramLevel type={type} /></>}
+      {type && (
+        <>
+          <h1 className="pb-6 text-center text-white text-[30px] font-bold">
+            Next, choose your difficulty level
+          </h1>
+          {/* After muscle group is selected ProgramLevel is displayed with the type prop */}
+          <ProgramLevel type={type} />
+        </>
+      )}
     </div>
   );
 }

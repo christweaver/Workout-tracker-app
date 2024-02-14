@@ -7,16 +7,20 @@ export default function Signup() {
   const router = useRouter();
   let handleSubmit = async (e) => {
     e.preventDefault();
-
+    // Send a POST request to the signUp API endpoint
     const res = await fetch("/api/signUp", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
       },
+      // Convert state variables to JSON string and send as request body
       body: JSON.stringify({ email, password }),
     });
     if (res.ok) {
+      //  Send user to the login page
       router.replace("/login");
+    } else {
+      console.log(res.error);
     }
   };
 
