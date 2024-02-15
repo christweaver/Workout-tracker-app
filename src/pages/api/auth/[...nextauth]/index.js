@@ -4,6 +4,7 @@ import connectToDb from "../../../../db/mongodb";
 import User from "../../../../models/userSchema";
 
 const authOptions = {
+  baseUrl: "https://workout-tracker-hlk62yy87-christys-projects.vercel.app", // Replace this with your actual production base URL
   providers: [
     CredentialsProvider({
       type: "credentials",
