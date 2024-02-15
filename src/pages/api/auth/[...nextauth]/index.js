@@ -32,6 +32,19 @@ const authOptions = {
   pages: {
     signIn: "login",
   },
+  httpClient: async (url, options) => {
+    const timeout = 10000; // 10 seconds
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), timeout);
+
+    const response = await fetch(url, {
+      ...options,
+      signal: controller.signal,
+    });
+
+    clearTimeout(timeoutId);
+    return response;
+  },
 };
 
 export default NextAuth(authOptions);
