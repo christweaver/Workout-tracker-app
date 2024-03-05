@@ -1,7 +1,20 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
+## SwoleMate
+Welcome to my workout tracker app! This application, built with Next.js, allows users to track their workouts effectively. It incorporates NextAuth for user authentication and MongoDB for database management, enabling users to create, edit, and delete workouts. Users can also view all their previously added workouts upon signing in. Additionally, the app provides options for users to select specific body regions and difficulty level. After making these selections, the application generates a randomized set of exercises for the user to engage with, offering a diverse array of workout options.
 
 https://github.com/christweaver/Workout-tracker-app/assets/100533989/d2ab4b9a-ad28-4dd0-8ee9-ebbb98b9875f
+
+## Technologies Used
+- Next.js
+- NextAuth
+- MongoDB
+
+## Usage
+1. User Authentication: Sign up or log in to your account using NextAuth.
+2. Workout Creation: Create a new workout and add to dashboard.
+3. Editing and Deleting Workouts: Edit or delete existing workouts as needed.
+4. Viewing Workouts: Access all previously added workouts from your account dashboard.
+5. Select a randomized set of exercises by specifying the body region and difficulty level.
+
 
 
 ## Getting Started
@@ -42,3 +55,6 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+##
+Thank you for using my workout tracker app! Start tracking your workouts efficiently and reach your fitness goals with ease. If you encounter any issues or have any feedback, feel free to open an issue or reach out to our contributors. Happy training! 💪🏋️‍♀️
