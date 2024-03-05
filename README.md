@@ -23,24 +23,42 @@ https://github.com/christweaver/Workout-tracker-app/assets/100533989/d2ab4b9a-ad
 4. Viewing Workouts: Access all previously added workouts from your account dashboard.
 5. Select a randomized set of exercises by specifying the body region and difficulty level.
 
+## Installation
+To run this application locally, follow these steps:
 
-
-## Quick Start
-
-First, run the development server:
+Clone this repository to your local machine.
 
 ```bash
+
+git clone https://github.com/your-username/workout-tracker-app.git
+```
+Navigate to the project directory.
+
+```bash
+
+cd workout-tracker-app
+```
+Install dependencies using npm or yarn.
+
+```bash
+
+npm install
+# or
+yarn install
+```
+
+
+Create a .env.local file in the root directory of the project and add the MongoDB connection URI and NextAuth configuration.
+
+Start the development server.
+
+```bash
+
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
+Open your browser and visit http://localhost:3000 to view the application.
 
 ##
 Thank you for using my workout tracker app! Start tracking your workouts efficiently and reach your fitness goals with ease. If you encounter any issues or have any feedback, feel free to open an issue or reach out to our contributors. Happy training! 💪🏋️‍♀️
