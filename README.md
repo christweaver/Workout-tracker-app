@@ -8,6 +8,13 @@ https://github.com/christweaver/Workout-tracker-app/assets/100533989/d2ab4b9a-ad
 - NextAuth
 - MongoDB
 
+## Features
+- User Authentication: Utilizes NextAuth for secure user login and account creation.
+- Database Management: Utilizes MongoDB to store workout data, allowing users to create, edit, and delete workouts.
+- Workout Logging: Users can log their workouts, specifying body regions and difficulty levels.
+- Randomized Exercise Selection: Based on the selected body regions and difficulty level, a random set of exercises is generated for users to add to their workout database.
+
+
 ## Usage
 1. User Authentication: Sign up or log in to your account using NextAuth.
 2. Workout Creation: Create a new workout and add to dashboard.
